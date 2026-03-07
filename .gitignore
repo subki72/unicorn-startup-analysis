@@ -1,0 +1,9 @@
+# Mengabaikan file data dummy (karena di-generate otomatis oleh script)
+*.csv
+*.sqlite
+*.db
+
+# Mengabaikan file environment & cache Jupyter
+.ipynb_checkpoints/
+__pycache__/
+.env
