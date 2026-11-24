@@ -1,9 +1,40 @@
-# Mengabaikan file data dummy (karena di-generate otomatis oleh script)
+# Environment & Secrets (Check 4.1)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.cert
+id_rsa
+secrets/
+
+# Generated datasets & local databases
 *.csv
 *.sqlite
+*.sqlite3
 *.db
+data/
+artifacts/
 
-# Mengabaikan file environment & cache Jupyter
-.ipynb_checkpoints/
+# Python & Virtual Environments
 __pycache__/
-.env
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Jupyter & OS / IDE
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
