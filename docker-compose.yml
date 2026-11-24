@@ -1,0 +1,25 @@
+services:
+  unicorn-analytics-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: unicorn-startup-analysis:latest
+    container_name: unicorn-analytics-api
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: ${DB_PATH:-:memory:}
+      DB_TIMEOUT_SECONDS: ${DB_TIMEOUT_SECONDS:-10.0}
+      DEFAULT_NUM_COMPANIES: ${DEFAULT_NUM_COMPANIES:-100}
+      RANDOM_SEED: ${RANDOM_SEED:-42}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-120}
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-60}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
