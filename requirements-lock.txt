@@ -1,6 +1,6 @@
 # Deterministic pinned runtime & test dependency manifest for Python 3.11+
 Faker==30.8.2
-fastapi==0.115.6
+fastapi==0.165.0
 httpx==0.28.1
 matplotlib==3.9.2
 numpy==2.1.3
